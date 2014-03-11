@@ -5,12 +5,11 @@
 ;;; All functions take a vector of octets as returned for instance by babel:string-to-octets.
 ;;; Some still use them internally after converting to a list.
 ;;; An abundance of u32 calls is used to keep also intermediary results in a 32 bit register.
-;;; FIXME : sbcl's optimizer has problems with that:  #'ash expects 'fixnum, not 'integer. 
+;;; FIXME : sbcl's optimizer has many complains. 
 ;;; FIXME : use u32 more sparingly
 ;;; CHECK : sbcl prefers logand xFFFFFFFF
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-#+(nil)
 (declaim (inline rot32 double-hash bytes-to-word32)
 	 (optimize (speed 3) 
 		   (safety 0) 
