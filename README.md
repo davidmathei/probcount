@@ -1,14 +1,15 @@
 #What it is
-A Common Lisp implementation of a Bloom Filter anmd a Linear Probabilistic counter. 
+A Common Lisp implementation of a Bloom Filter anmd a Linear Probabilistic Counter. 
 Above that some simple 32 bit hash functions and a test suite to play around with 
 parameters and to allow for basic profiling.
 
-Bloom filters allow to determin if an item is present in a set given it's hash. 
+Bloom filters represebt a set and allow to determine if an item is present in it. 
 If an item cannot be found it is definitely not there, false positives are possible though.
-Their probability is tunable 
+Their probability is tunable. 
 
-A linear probabilistic counter aims to count unique items probabilistically. 
-Items are again recorded through their hash value, the counter estimates the cardinality of the set.
+A linear probabilistic counter aims to approximately count unique items in a set. 
+Like in the case of Bloom filters, items are added by means of their hash value, 
+the counter estimates the cardinality of the set.
 #How to use it
 The bloom filter:
 
@@ -35,9 +36,9 @@ Run with
      (asdf:operate 'asdf:test-op :probcount)
 
 #Todos / Shortcomings
-* 32 bit hashes might not be sufficient for implementation of big counters or bigger bloom filters.
+* 32 bit hashes might not be sufficient to implement big counters or bigger bloom filters.
 * Profiling tests are incomplete.
 * Most of the hash functions do not go well with short keys.
-
+* The Bloom filter could support deletion.
 #License
 (c) David Mathei.  See LICENSE file for permissions
